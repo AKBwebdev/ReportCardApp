@@ -1,7 +1,5 @@
 package com.example.android.reportcardapp;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -261,7 +259,6 @@ public class ReportCard {
         }
 
         averageMarks = (totalMarks / listSize);
-        Log.v("RC", "" + totalMarks + "/" + listSize + "/" + averageMarks);
         if (averageMarks >= 90) {
             mFinalGrade = 'A';
             mFinalGradeDesc = GRADE_EXCELLENT;
@@ -288,7 +285,6 @@ public class ReportCard {
      * This method returns String representation of the current Class object
      * @return output
      */
-    @Override
     public String toString() {
         return prepareOutput();
     }
