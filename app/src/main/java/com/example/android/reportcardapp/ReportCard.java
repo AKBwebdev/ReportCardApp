@@ -10,6 +10,14 @@ import java.util.regex.Pattern;
  * It takes Student Name, Teacher Name, Student Year, Subjects, Marks, and
  * Special Message as inputs to prepare the report.
  * The class also validates and sanitizes data where appropriate.
+ * Validations performed by the class are as follows:
+ *      - Checks if an input name contain characters other than a-z, A-Z, space and '.
+ *              If it does, then removes those characters, and converts name to Title Case.
+ *      - Checks if Student Year is between 1 and 13; if not it sets year to 1.
+ *      - Checks if a Subject contains characters other than a-z, A-Z and space.
+ *              If it does, then removes those characters.
+ *      - Checks if any input marks are less than 0 or greater than 100, in which case
+ *              it sets marks to 0.
  *
  * @author  Aditi Bhattacharya
  * @version 1.0
@@ -45,9 +53,13 @@ public class ReportCard {
     private ArrayList<SubjectMark> mSubjectMarks;
 
 
-
     /**
      * Default Constructor for ReportCard class
+     * @param studentName
+     * @param teacherName
+     * @param studentYear
+     * @param subjectMarks
+     * @param message
      */
     public ReportCard (String studentName, String teacherName, int studentYear,
                        ArrayList<SubjectMark> subjectMarks, String message) {
@@ -214,8 +226,16 @@ public class ReportCard {
     }
 
     /**
+     * This method returns String representation of the current Class object
+     * @return output
+     */
+    public String toString() {
+        return prepareOutput();
+    }
+
+    /**
      * This method prepares the string to be displayed as output
-     * @return
+     * @return strOutput
      */
     public String prepareOutput() {
         String strOutput = "";
@@ -279,17 +299,8 @@ public class ReportCard {
             mFinalGradeDesc = GRADE_FAIL;
         }
     }
-
-
-    /**
-     * This method returns String representation of the current Class object
-     * @return output
-     */
-    public String toString() {
-        return prepareOutput();
-    }
-
 }
+
 
 /**
  * Object for Subjects and corresponding marks
@@ -297,7 +308,7 @@ public class ReportCard {
  * Methods - getter methods, setter methods, validation methods
  */
 class SubjectMark {
-    static final private int MIN_SCORE = 1;
+    static final private int MIN_SCORE = 0;
     static final private int MAX_SCORE = 100;
     private String mSubject;
     private int mMarks;
@@ -364,7 +375,7 @@ class SubjectMark {
     }
 
     /**
-     * This method validates if input marks is between 1 and 100, else it defaults the value to 0
+     * This method validates if input marks is between 0 and 100, else it defaults the value to 0
      * @param marks
      * @return validated marks
      */
@@ -372,7 +383,7 @@ class SubjectMark {
         int validatedMarks = 0;
 
         if ((marks < MIN_SCORE) || (marks > MAX_SCORE)) {
-            validatedMarks = 0;
+            validatedMarks = MIN_SCORE;
         } else {
             validatedMarks = marks;
         }
