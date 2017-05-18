@@ -229,6 +229,7 @@ public class ReportCard {
      * This method returns String representation of the current Class object
      * @return output
      */
+    @Override
     public String toString() {
         return prepareOutput();
     }
