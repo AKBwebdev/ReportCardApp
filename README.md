@@ -1,8 +1,12 @@
 # Report Card App
-It uses a custom Java class to generate the report of a school student.
-It takes Student Name, Teacher Name, Student Year, Subjects, Marks, and a Special Message as inputs to prepare the report.
+*Created as part of Udacity's Android Basics by Google Nanodegree Program*
+______________________
 
-The class also validates and sanitizes data where appropriate.
+#### Project Overview
+The goal was to design and create the structure of a ReportCard Java Class which would allow a school to store a student’s grades for a particular year. 
+
+The custom Java class takes Student Name, Teacher Name, Student Year, Subjects, Marks, and a Special Message as inputs to prepare the report, validates and sanitizes data where appropriate and outputs report.
+
 Validations performed by the class are as follows:
 <ul>
      <li>Checks if an input name contain characters other than a-z, A-Z, space and '.
